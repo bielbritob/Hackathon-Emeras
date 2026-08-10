@@ -1,0 +1,41 @@
+services:
+  # 1. Banco de Dados MySQL
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: hackathon_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql # Salva os dados para não perder se o contêiner cair
+
+  # 2. Nossa API FastAPI
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Passa a URL do banco para o seu database.py usar
+      - DATABASE_URL=mysql+aiomysql://admin:adminpassword@db:3306/hackathon_db
+    volumes:
+      - ./backend:/app # Hot-reload: altera o código no VSCode e atualiza no contêiner
+    depends_on:
+      - db # O backend só sobe depois que o banco estiver pronto
+
+  # 3. Nosso Frontend Vite
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Impede que o node_modules do seu PC conflite com o do Linux
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

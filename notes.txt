@@ -1,3 +1,17 @@
-- Atualizar:
+- Atualizar tudo:
     git fetch origin
     git reset --hard origin/main
+
+- Atualizar
+    git update-ref -d refs/remotes/origin/main
+    git fetch origin
+    git pull
+
+- Docker 
+    docker compose up 
+    docker compose up --build #1º vez
+    docker compose logs -f #logs
+
+- Sites
+    Acessar o Frontend (Vite): http://localhost:5173
+    Acessar o Backend (Swagger interativo): http://localhost:8000/docs

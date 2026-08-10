@@ -3,10 +3,14 @@
     source venv/bin/activate
 
 - Baixar requirements
-    pip3 install -r requirements.txt
+    pip3 install -r requirements/dev.txt
 
 - Atualizar requirements
     pip3 freeze > requirements.txt
 
 -- Rodar
     fastapi dev src/main.py
+    uvicorn src.main:app --reload
+
+-- Pytest
+    pytest -v #verbose
