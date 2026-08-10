@@ -1,4 +1,7 @@
-# React + Vite
+# React + Vite * TailwindCSS
+
+pls install: 
+`npm install tailwindcss @tailwindcss/vite`
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
