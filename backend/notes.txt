@@ -1,0 +1,8 @@
+cd backend
+
+
+- Baixar requirements
+    pip3 install -r requirements.txt
+
+- Atualizar requirements
+    pip3 freeze > requirements.txt
