@@ -1,5 +1,0 @@
-httpx
-pypdf
-fastapi
-cryptography
-uvicorn

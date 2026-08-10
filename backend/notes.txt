@@ -1,8 +1,12 @@
-cd backend
-
+- Obrigatório
+    cd backend
+    source venv/bin/activate
 
 - Baixar requirements
     pip3 install -r requirements.txt
 
 - Atualizar requirements
     pip3 freeze > requirements.txt
+
+-- Rodar
+    fastapi dev src/main.py
