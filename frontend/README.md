@@ -5,21 +5,16 @@ pls first install:
 npm install tailwindcss @tailwindcss/vite
 ```
 
-# little preview
+
 # little preview
 
-```mermaid
-flowchart LR
-    A[<img src='assets/input0.png' width='100'/>] --> B[<img src='assets/input1.png' width='100'/>]
-```
 
-```mermaid
-sequenceDiagram
-    participant Tela1 as <img src='assets/input0.png' width='50'/><br/>Input 0
-    participant Tela2 as <img src='assets/input1.png' width='50'/><br/>Input 1
-    
-    Tela1->>Tela2: Avançar para próxima etapa
-```
+<p align="center" style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+  <img src="assets/input0.png" width="500" style="vertical-align: middle;" />
+  <span style="vertical-align: middle; font-size: 24px;">➜</span>
+  <img src="assets/input1.png" width="500" style="vertical-align: middle;" />
+</p>
+
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
