@@ -5,7 +5,7 @@
 ## Getting started
 
 ```mermaid
-flowchart LR
+flowchart TD
     %% Decisão inicial
     INPUT_DECISION{"tipo do input"}
     INPUT_DECISION -->|else| INVALID["Formato inválido"]
