@@ -54,7 +54,7 @@ function App() {
 
                         formData.append('file', e.target.files[0]);
 
-                        const response = await fetch('http://localhost:8000/triagem', {
+                        const response = await fetch('http://localhost:8000/documentos', {
                           method: 'POST',
                           body: formData,
                         });
