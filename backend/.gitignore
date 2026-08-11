@@ -61,3 +61,6 @@ dist-ssr
 
 #python
 .venv/
+__pycache__/
+*.py[cod]
+*$py.class
