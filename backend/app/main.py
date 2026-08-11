@@ -14,4 +14,4 @@ async def root():
         "status": "sucesso",
         "mensagem": "A API está rodando perfeitamente!"
     }
-
+# booommmm
