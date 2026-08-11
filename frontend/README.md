@@ -1,7 +1,26 @@
-# React + Vite * TailwindCSS
+# React + Vite + TailwindCSS
+pls first install: 
 
-pls install: 
-`npm install tailwindcss @tailwindcss/vite`
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+# little preview
+# little preview
+
+```mermaid
+flowchart LR
+    A[<img src='assets/input0.png' width='100'/>] --> B[<img src='assets/input1.png' width='100'/>]
+```
+
+```mermaid
+sequenceDiagram
+    participant Tela1 as <img src='assets/input0.png' width='50'/><br/>Input 0
+    participant Tela2 as <img src='assets/input1.png' width='50'/><br/>Input 1
+    
+    Tela1->>Tela2: Avançar para próxima etapa
+```
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
