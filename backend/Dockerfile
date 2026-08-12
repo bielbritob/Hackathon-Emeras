@@ -4,6 +4,14 @@ FROM python:3.14.4
 # Define a pasta de trabalho dentro do contêiner
 WORKDIR /app
 
+# OCR
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tesseract-ocr \
+    tesseract-ocr-por \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copia o arquivo requirements.txt
 COPY requirements.txt ./requirements.txt
 

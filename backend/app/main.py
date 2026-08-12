@@ -1,17 +1,19 @@
 from fastapi import FastAPI
+from app.api.v1.api import api_router
 
-# Inicializa o aplicativo FastAPI com algumas informações básicas
+# Inicializa o aplicativo FastAPI 
 app = FastAPI(
-    title="Meu Projeto API",
+    title="EMERON Gestão Inteligente API",
     description="Backend estruturado com FastAPI, SQLAlchemy e MySQL",
     version="0.1.0",
 )
 
-# Cria uma rota básica de teste para saber se está tudo funcionando
-@app.get("/")
-async def root():
-    return {
-        "status": "sucesso",
-        "mensagem": "A API está rodando perfeitamente!"
-    }
-# booommmm
+# Comentário: Registro do roteador da V1 com o prefixo global /api/v1
+app.include_router(api_router, prefix="/api/v1")
+
+@app.get("/", tags=["Status"])
+async def health_check():
+    """
+    Comentário: Rota de verificação do estado operacional da API.
+    """
+    return {"status": "operacional", "mensagem": "API do EMERON Gestão Inteligente rodando com sucesso."}
