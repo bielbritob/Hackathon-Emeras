@@ -21,8 +21,9 @@ services:
     environment:
       # Passa a URL do banco para o seu database.py usar
       - DATABASE_URL=mysql+aiomysql://admin:adminpassword@db:3306/hackathon_db
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
-      - ./backend:/app # Hot-reload: altera o código no VSCode e atualiza no contêiner
+      - ./backend:/app 
     depends_on:
       - db # O backend só sobe depois que o banco estiver pronto
 
@@ -33,7 +34,7 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
-      - /app/node_modules # Impede que o node_modules do seu PC conflite com o do Linux
+      - /app/node_modules 
     depends_on:
       - backend
 
