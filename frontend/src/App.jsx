@@ -1,9 +1,10 @@
 import './App.css'
+import Input from "./pages/Input.jsx";
 
 function App() {
   return (
       <>
-        <header className="App-header">Header aq 😁</header>
+        <Input/>
       </>
   )
 }
