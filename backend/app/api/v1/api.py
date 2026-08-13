@@ -1,8 +1,10 @@
 from fastapi import APIRouter
-from app.api.v1.routers import documents
+from app.api.v1.routers import documents, educational_actions
 
 # Comentário: Router central agregador de todas as rotas da V1
 api_router = APIRouter()
 
-# Comentário: Define o prefixo da rota para /documentos e centraliza a tag da documentação
-api_router.include_router(documents.router, prefix="/documentos", tags=["Documentos"])
+# Comentário: Inclui os routers específicos de cada recurso
+api_router.include_router(documents.router)
+
+api_router.include_router(educational_actions.router)

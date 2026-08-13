@@ -7,6 +7,13 @@
     git fetch origin
     git pull
 
+- Branch 
+    git fetch -a
+    git branch -a
+    git fetch --prune
+    git branch -d "branchx"
+    git fetch --all
+    git branch -r
 - Docker 
     docker compose up 
     docker compose up --build #1º vez

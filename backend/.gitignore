@@ -64,3 +64,6 @@ dist-ssr
 __pycache__/
 *.py[cod]
 *$py.class
+
+#ignore uploaded files
+uploaded_files/*
