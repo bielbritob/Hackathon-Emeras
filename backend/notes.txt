@@ -1,17 +1,50 @@
-- Obrigatório
-    cd backend
-    python3 -m venv venv
-    source venv/bin/activate
+=========================================================
+  GUIA DE CONFIGURAÇÃO - EMERON GESTÃO INTELIGENTE
+=========================================================
 
-- Baixar requirements
-    pip3 install -r requirements.txt
+1. VARIÁVEIS DE AMBIENTE (.env)
+---------------------------------------------------------
+Crie um arquivo chamado ".env" na pasta raiz do projeto (junto com o docker-compose.yml) e adicione as senhas:
 
-- Atualizar requirements
-    pip3 freeze > requirements.txt
+# Configurações do Google Gemini e Banco de Dados
+GEMINI_API_KEY=SUA.CHAVE.SEGURA.DO.GEMINI
+DATABASE_URL=mysql+aiomysql://admin:adminpassword@db:3306/hackathon_db
 
--- Rodar
-    fastapi dev src/main.py
-    uvicorn src.main:app --reload
 
--- Pytest
-    pytest -v #verbose
+2. DOCKER (RODAR A APLICAÇÃO E O BANCO)
+---------------------------------------------------------
+Abra o terminal na pasta raiz do projeto:
+
+- Na PRIMEIRA vez (para baixar e construir tudo):
+  docker compose up --build -d
+
+- Nas VEZES SEGUINTES (dia a dia):
+  docker compose up -d
+
+- Para DESLIGAR tudo:
+  docker compose down
+
+
+3. BANCO DE DADOS (CRIAR AS TABELAS)
+---------------------------------------------------------
+Com o Docker rodando, você precisa aplicar as tabelas no seu banco local. 
+Rode o comando abaixo no terminal da raiz do projeto:
+
+  docker compose exec backend alembic upgrade head
+
+Pronto! A API já está rodando em http://localhost:8000/docs
+
+
+=========================================================
+  COMANDOS EXTRAS
+=========================================================
+Se você alterar algum arquivo em "models/" e precisar criar uma tabela/coluna nova, rode:
+
+1. Gerar a migração:
+   docker compose exec backend alembic revision --autogenerate -m "nome_da_mudanca"
+
+2. Aplicar a mudança no seu banco:
+   docker compose exec backend alembic upgrade head
+
+(Não esqueça de comitar o arquivo novo gerado na pasta alembic/versions/ para o Git!)
+
