@@ -1,9 +1,4 @@
-# React + Vite + TailwindCSS
-pls first install: 
-
-```bash
-npm install tailwindcss @tailwindcss/vite
-```
+# React + Vite + FastAPI + MySQL
 
 
 # little preview
