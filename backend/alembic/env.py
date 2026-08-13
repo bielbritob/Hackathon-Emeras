@@ -24,7 +24,6 @@ if config.config_file_name is not None:
 # 3. Informa ao Alembic onde estão as nossas tabelas
 target_metadata = Base.metadata
 
-# 4. TRUQUE SÊNIOR: Padrão Fallback
 # Se o DATABASE_URL não existir no .env, ele usa o banco do Docker local automaticamente!
 DEFAULT_URL = "mysql+pymysql://admin:adminpassword@localhost:3306/hackathon_db"
 db_url = os.getenv("DATABASE_URL", DEFAULT_URL)
