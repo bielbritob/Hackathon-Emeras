@@ -8,7 +8,6 @@ Crie um arquivo chamado ".env" na pasta raiz do projeto (junto com o docker-comp
 
 # Configurações do Google Gemini e Banco de Dados
 GEMINI_API_KEY=SUA.CHAVE.SEGURA.DO.GEMINI
-DATABASE_URL=mysql+aiomysql://admin:adminpassword@db:3306/hackathon_db
 
 
 2. DOCKER (RODAR A APLICAÇÃO E O BANCO)
@@ -16,10 +15,10 @@ DATABASE_URL=mysql+aiomysql://admin:adminpassword@db:3306/hackathon_db
 Abra o terminal na pasta raiz do projeto:
 
 - Na PRIMEIRA vez (para baixar e construir tudo):
-  docker compose up --build -d
+  docker compose up --build 
 
 - Nas VEZES SEGUINTES (dia a dia):
-  docker compose up -d
+  docker compose up 
 
 - Para DESLIGAR tudo:
   docker compose down
@@ -48,3 +47,20 @@ Se você alterar algum arquivo em "models/" e precisar criar uma tabela/coluna n
 
 (Não esqueça de comitar o arquivo novo gerado na pasta alembic/versions/ para o Git!)
 
+- Obrigatório
+    cd backend
+    python3 -m venv venv
+    source venv/bin/activate
+
+- Baixar requirements
+    pip3 install -r requirements.txt
+
+- Atualizar requirements
+    pip3 freeze > requirements.txt
+
+-- Rodar
+    fastapi dev src/main.py
+    uvicorn src.main:app --reload
+
+-- Pytest
+    pytest -v #verbose
