@@ -33,7 +33,7 @@ async def upload_and_process_document(
     if not file.filename or not file.filename.lower().endswith(allowed_extensions):
         raise HTTPException(status_code=400, detail="Formato de arquivo não suportado.")
 
-    # 1. OCR e Extração de Texto Bruto (USANDO O SEU CÓDIGO ORIGINAL QUE FUNCIONAVA)
+    # 1. OCR e Extração de Texto Bruto
     extractor = DocumentExtractorService(file)
     try:
         extracted_text = await extractor.process_document()
@@ -73,3 +73,30 @@ async def upload_and_process_document(
     saved_document = repository.create(document_in)
 
     return saved_document
+
+@router.patch("/{document_id}/link/{action_id}", response_model=DocumentResponse)
+def link_document_to_action(
+    document_id: int, 
+    action_id: int, 
+    db: Session = Depends(get_db)
+):
+    """
+    Vincula um documento da Caixa de Entrada a uma Ação Educacional.
+    """
+    repository = DocumentRepository(db)
+    
+    # Verifica se o documento existe
+    document = repository.get_by_id(document_id)
+    if not document:
+        raise HTTPException(status_code=404, detail="Documento não encontrado.")
+        
+    # Verifica se já está vinculado para evitar erros
+    if document.educational_action_id is not None:
+         raise HTTPException(status_code=400, detail="Este documento já está vinculado a uma ação.")
+    
+    # Efetua o vínculo
+    updated_document = repository.link_to_educational_action(document_id, action_id)
+    
+    # TODO: Aqui chamaremos a função para recalcular o "Nível de Atenção" da Ação Educacional
+    
+    return updated_document
